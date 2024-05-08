@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Template App</string>
+
+    <string name="splash_title">Splash Screen</string>
+    <string name="login_title">Login</string>
+
+    <!-- LOGIN -->
+    <string name="email_id">Email ID</string>
+    <string name="hint_enter_email_id">Enter Email ID</string>
+    <string name="password">Password</string>
+    <string name="hint_enter_password">Enter Password</string>
+    <string name="btn_log_in">Log In</string>
+    <string name="btn_forgot_password">Forgot Password?</string>
+    <string name="error_email_id_required">Email id is required</string>
+    <string name="error_invalid_email_address">Invalid Email Address</string>
+    <string name="error_password_required">Password is required</string>
+    <string name="error_invalid_password">Invalid Password</string>
+
+    <!-- DASHBOARD -->
+    <string name="title_hello_agent_name">Hello, %1$s</string>
+    <string name="showing_count_result">Showing %1$d result</string>
+    <string name="no_transaction_available">No Transaction Available</string>
+    <string name="hash_id_string">#%1$s</string>
+    <string name="created">Created</string>
+    <string name="last_updated">Last Updated</string>
+    <string name="commencement_closing">Commencement/Closing</string>
+    <string name="expiry">Expiry</string>
+    <string name="view_transaction">View Transaction</string>
+</resources>

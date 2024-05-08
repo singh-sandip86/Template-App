@@ -1,0 +1,18 @@
+{
+  "status_code": 200,
+  "success": true,
+  "message": "Login successfully",
+  "data": {
+    "user_id": 635,
+    "first_name": "Julianna",
+    "middle_name": "New Test456",
+    "last_name": "McMillen",
+    "email": "nikhil+agent3@torinit.com",
+    "created_at": "2022-05-05",
+    "permissions": [],
+    "role": 2,
+    "token_type": "Bearer",
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiN2MwOWZiNjkwNWQzY2EzNjgzODBkM2VhYjEwYmMxNzhkMTQ5NDU0NjJhYjIwZjBmYWY3YjI4NjM4YWE4Zjk5NmM1YmQ1NGVkN2MxYzgzMGIiLCJpYXQiOjE3MTE1MzMwODIuMTg5NzYzLCJuYmYiOjE3MTE1MzMwODIuMTg5NzY4LCJleHAiOjE3MTQxMjUwODIuMTYxMjg1LCJzdWIiOiI2MzUiLCJzY29wZXMiOlsiKiJdfQ.vwv53NVCv4hDHrbiLmY3A77T6uSAmBiq_Y8kDcicu8eJIJMgdl9b4uYHOF93J8SCsOJ8Rztc9giYXwuXEO-NxVGS1jt7o1JARr-XYMHaTGIYJZsiFOpDmZd4em70qqI2I2McIuTafFTNHv7DTxcPJopT37L0kCEmsKT37J6EeRGd72vnjDppuo-qS1R6BLTlzPobUfmaBWOVybe-V_cSBkYDHp5tiGr8G_2JkfYWwDZgOb2vz1JWwwphsAA78H8vy7y08huZM6UQ3wf4puD7pywsDO1vmUxlYhDbbsKCiIjQ9ZZqATzdK5juVTvBXFFbnZkeDl5witSqnA2XnzBybeWRLy3vYUHCbYCqKhTBwyFdQYJBcAtkkjjXLWJMbpL4wzcLk2DFR-yj4WpEKBj-00Y9XiIYYmdrB8PO5Ny1U1eDqTYNAYiYOv9hVVpXjRV6Lp6oxeYdzEPUO1I6AxpNgPs6VRE1mS09UyodqVZOq2WoN6sVYkkc6ao8fe0oc6xycHJdOd5zwB3d7TvIdBCc_S6Lv39n6x8fPnlM6SqNSKCQqA4rhAWCfVzuaalbopxh5gxIEyJjgTx8JqNEVt3xp2L-DuLe4iEiSuCkLaJ2Jbm-w5wYNm2dtwE28s0oMDGng8Jh8aIenjNleGoA-0V546nB-Dofi_4NBQu01ZXwf8I",
+    "refresh_token": "def502000ddb50d38ebe79584f7cfed9b20f3fea6a32e989231b2f0406adb669067363fab5003bc9355d6c58662fb2f131a27c538d9241140ba0460a04b55e8855193b5ea4b07b111251a4f13ac2c07be5cd0479b1ef4388f7e82536bd43087eb2ba18256cd749d99dccf93e7a9b15ed96c9c0ac7632f2a8ca683f6448c1dd89135997d830ce0221d95ccc02925ffd9bdc08e87a7a263bb529aea86de6dd4dbd51a1a580be19152c533bc55182385138859316ffe1717dc51c4854a81c7a049a64a0f1c14ab414189207ba51af175074c6b62ced032dbbf4c2c0e9f97da9a1dcc9ad1aa9d6ea0e62b72ae099e71e5c562dbdbd6f989655e8f8a0d63781eacb19e8377f7582c040c6053e767969464ed36a70a444e7882e2e2ce1397eb541af8f3b43cef9460e27c7138d754740f7a40e4beae0f52ee2d37e390f3151f6b94a411faf4db935bb364e7e248a4a533ca77c8dcb41d1d80a1724293efc93ae9b2a66069f7ce01365"
+  }
+}

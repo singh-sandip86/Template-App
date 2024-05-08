@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.graphics.Color" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="transaction"
+            type="com.example.templateapp.model.dashboard.UITransaction" />
+
+        <variable
+            name="onViewTransactionClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="horizontalPaddingPx"
+            type="Integer" />
+
+        <variable
+            name="hideViewTransaction"
+            type="Boolean" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{onViewTransactionClick}"
+                android:padding="@dimen/dp_16">
+
+                <TextView
+                    android:id="@+id/transaction_id_tv"
+                    style="@style/TextView.Caption2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_rounded"
+                    android:includeFontPadding="false"
+                    android:text="@{@string/hash_id_string(transaction.transactionId)}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="#12345667" />
+
+                <TextView
+                    android:id="@+id/transaction_status_tv"
+                    style="@style/TextView.Caption2"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_8"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:lines="1"
+                    android:paddingHorizontal="@dimen/dp_8"
+                    android:text="@{transaction.transactionStatus}"
+                    app:drawableStartCompat="@drawable/ic_dot"
+                    app:layout_constraintBottom_toBottomOf="@+id/transaction_id_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/transaction_id_tv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Needs Update" />
+
+                <TextView
+                    style="@style/TextView.Caption2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:paddingHorizontal="@dimen/dp_8"
+                    android:text="@{transaction.propertyType}"
+                    android:visibility="gone"
+                    app:drawableStartCompat="@drawable/ic_divider"
+                    app:layout_constraintBottom_toBottomOf="@+id/transaction_id_tv"
+                    app:layout_constraintStart_toEndOf="@+id/transaction_id_tv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Property Listing" />
+
+                <TextView
+                    android:id="@+id/property_address_tv"
+                    style="@style/TextView.Subtitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp_10"
+                    android:text="@{transaction.propertyAddress}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/transaction_id_tv"
+                    tools:text="220-5 Marine Parade Dr, Toronto, M8V 4B4" />
+
+                <TextView
+                    android:id="@+id/transaction_property_type_tv"
+                    style="@style/TextView.Caption2.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:includeFontPadding="false"
+                    android:paddingTop="@dimen/dp_8"
+                    android:text="@{transaction.propertyType}"
+                    android:visibility="@{transaction.propertyType.empty ? View.GONE : View.VISIBLE}"
+                    app:drawableEndCompat="@drawable/ic_divider"
+                    app:drawableStartCompat="@drawable/ic_group"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/property_address_tv"
+                    tools:text="Paul Cooper" />
+
+                <TextView
+                    android:id="@+id/property_rate_tv"
+                    style="@style/TextView.Caption2.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:includeFontPadding="false"
+                    android:paddingHorizontal="@dimen/dp_8"
+                    android:paddingTop="@dimen/dp_8"
+                    android:text="@{transaction.propertyRate}"
+                    android:visibility="@{transaction.propertyRate.empty ? View.GONE : View.VISIBLE}"
+                    app:drawableEndCompat="@drawable/ic_divider"
+                    app:drawableStartCompat="@drawable/ic_tag"
+                    app:layout_constraintStart_toEndOf="@+id/transaction_property_type_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/property_address_tv"
+                    tools:text="$1,199,000"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/person_name_tv"
+                    style="@style/TextView.Caption2.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:includeFontPadding="false"
+                    android:paddingStart="@{transaction.personName.empty ? @dimen/dp_0 : @dimen/dp_8}"
+                    android:paddingTop="@dimen/dp_8"
+                    android:text="@{transaction.personName}"
+                    android:visibility="@{transaction.personName.empty ? View.GONE : View.VISIBLE}"
+                    app:drawableStartCompat="@drawable/ic_person"
+                    app:layout_constraintStart_toEndOf="@+id/property_rate_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/property_address_tv"
+                    tools:text="08 Jun 2022" />
+
+                <TextView
+                    android:id="@+id/transaction_created_date_tv_label"
+                    style="@style/TextView.Caption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:includeFontPadding="false"
+                    android:text="@string/created"
+                    android:visibility="@{transaction.createdDate.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/transaction_property_type_tv"
+                    tools:text="@string/created" />
+
+                <TextView
+                    android:id="@+id/transaction_created_date_tv"
+                    style="@style/TextView.Caption2.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:includeFontPadding="false"
+                    android:paddingTop="@dimen/dp_4"
+                    android:text="@{transaction.createdDate}"
+                    android:visibility="@{transaction.createdDate.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/transaction_created_date_tv_label"
+                    tools:text="Paul Cooper" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/date_divider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:visibility="@{transaction.createdDate.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="@+id/transaction_created_date_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/transaction_created_date_tv_label"
+                    app:srcCompat="@drawable/vd_vector" />
+
+                <TextView
+                    android:id="@+id/transaction_last_updated_date_tv_label"
+                    style="@style/TextView.Caption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:includeFontPadding="false"
+                    android:text="@string/last_updated"
+                    android:visibility="@{transaction.createdDate.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toEndOf="@+id/date_divider"
+                    app:layout_constraintTop_toBottomOf="@+id/transaction_property_type_tv"
+                    tools:text="@string/last_updated" />
+
+                <TextView
+                    android:id="@+id/transaction_last_updated_date_tv"
+                    style="@style/TextView.Caption2.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:includeFontPadding="false"
+                    android:paddingTop="@dimen/dp_4"
+                    android:text="@{transaction.lastUpdated}"
+                    android:visibility="@{transaction.createdDate.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="@+id/transaction_last_updated_date_tv_label"
+                    app:layout_constraintTop_toBottomOf="@+id/transaction_last_updated_date_tv_label"
+                    tools:text="Paul Cooper" />
+
+                <TextView
+                    android:id="@+id/transaction_commencement_date_tv_label"
+                    style="@style/TextView.Caption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:includeFontPadding="false"
+                    android:text="@string/commencement_closing"
+                    android:visibility="@{transaction.createdDate.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/transaction_created_date_tv"
+                    tools:text="@string/commencement_closing" />
+
+                <TextView
+                    android:id="@+id/transaction_commencement_date_tv"
+                    style="@style/TextView.Caption2.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:includeFontPadding="false"
+                    android:paddingTop="@dimen/dp_4"
+                    android:text="@{transaction.commencementClosing}"
+                    android:visibility="@{transaction.createdDate.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/transaction_commencement_date_tv_label"
+                    tools:text="Paul Cooper" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/date_divider_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:visibility="@{transaction.createdDate.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="@+id/transaction_commencement_date_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/transaction_commencement_date_tv_label"
+                    app:srcCompat="@drawable/vd_vector" />
+
+                <TextView
+                    android:id="@+id/transaction_expiry_date_tv_label"
+                    style="@style/TextView.Caption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:includeFontPadding="false"
+                    android:text="@string/expiry"
+                    android:visibility="@{transaction.createdDate.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toEndOf="@+id/date_divider_2"
+                    app:layout_constraintTop_toBottomOf="@+id/transaction_last_updated_date_tv"
+                    tools:text="@string/expiry" />
+
+                <TextView
+                    android:id="@+id/transaction_expiry_date_tv"
+                    style="@style/TextView.Caption2.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:includeFontPadding="false"
+                    android:paddingTop="@dimen/dp_4"
+                    android:text="@{transaction.expiry}"
+                    android:visibility="@{transaction.createdDate.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="@+id/transaction_expiry_date_tv_label"
+                    app:layout_constraintTop_toBottomOf="@+id/transaction_expiry_date_tv_label"
+                    tools:text="Paul Cooper" />
+
+                <TextView
+                    android:id="@+id/view_transaction_tv"
+                    style="@style/TextView.Button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:onClick="@{onViewTransactionClick}"
+                    android:paddingTop="@dimen/dp_18"
+                    android:text="@string/view_transaction"
+                    android:visibility="@{hideViewTransaction ? View.GONE : View.VISIBLE}"
+                    app:drawableEndCompat="@drawable/ic_right_arrow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/transaction_commencement_date_tv"
+                    tools:text="@string/view_transaction" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.screen.launcher.LogInFragment">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.templateapp.ui.screen.launcher.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_5">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/tori_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_layout"
+            tools:ignore="ContentDescription" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:paddingHorizontal="@dimen/dp_24"
+            android:paddingTop="@dimen/dp_32"
+            android:paddingBottom="@dimen/dp_60"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_title"
+                android:textColor="@color/gray_10"
+                android:textSize="@dimen/text_size_20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvEmailId"
+                style="@style/LabelMedium"
+                android:layout_marginTop="@dimen/dp_36"
+                android:text="@string/email_id"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+            <EditText
+                android:id="@+id/edtEmailId"
+                style="@style/EditTextMedium"
+                android:layout_marginTop="@dimen/dp_2"
+                android:background="@{viewModel.loginError.emailInvalid ? @drawable/bg_edittext_error : @drawable/bg_edittext}"
+                android:hint="@string/hint_enter_email_id"
+                android:inputType="textEmailAddress"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.onEmailChange(text)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmailId"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/tvErrorEmailId"
+                style="@style/LabelMediumError"
+                android:text="@{viewModel.loginError.errorEmail}"
+                android:visibility="@{viewModel.loginError.emailInvalid ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtEmailId"
+                tools:text="lorem_ipsum_dolor"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvPassword"
+                style="@style/LabelMedium"
+                android:layout_marginTop="@dimen/dp_32"
+                android:text="@string/password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtEmailId" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPassword"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:background="@{viewModel.loginError.passwordInvalid ? @drawable/bg_edittext_psw_error : @drawable/bg_edittext_psw}"
+                android:gravity="center_vertical"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPassword"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/gray_7">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPassword"
+                    style="@style/EditTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:hint="@string/hint_enter_password"
+                    android:inputType="textPassword"
+                    android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChange(text)}"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_12" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvErrorPassword"
+                style="@style/LabelMediumError"
+                android:text="@{viewModel.loginError.errorPassword}"
+                android:visibility="@{viewModel.loginError.passwordInvalid ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilPassword"
+                tools:text="lorem_ipsum_dolor"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogIn"
+                style="@style/PositiveButtonSelector"
+                android:layout_marginTop="@dimen/dp_48"
+                android:onClick="@{() -> viewModel.onLoginClick()}"
+                android:text="@string/btn_log_in"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilPassword" />
+
+            <TextView
+                android:id="@+id/tvForgotPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="center_horizontal"
+                android:text="@string/btn_forgot_password"
+                android:textColor="@color/purple_6"
+                android:textSize="@dimen/text_size_14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnLogIn" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progress"
+                style="@style/ProgressBar.Circular"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
